@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { ItemListComponent } from './item-list/item-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [CommonModule, ItemListComponent],
+  template: `<app-item-list></app-item-list>`,
 })
-export class AppComponent {
-  title = 'frontend';
-}
+export class AppComponent {}
