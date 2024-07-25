@@ -1,27 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ItemService } from '../item.service';
-
-interface Item {
-  id: number;
-  name: string;
-}
 
 @Component({
   selector: 'app-item-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.css'],
+  styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit {
-  items: Item[] = [];
+  items: any[] = [];
 
-  constructor(private itemService: ItemService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.itemService.getItems().subscribe((data) => {
+    this.http.get<any[]>('http://localhost:3000/api/items').subscribe(data => {
       this.items = data;
     });
   }

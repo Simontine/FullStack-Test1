@@ -4,7 +4,12 @@ import { Observable } from 'rxjs';
 
 interface Item {
   id: number;
-  name: string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  rate: number;
+  count: number;
 }
 
 @Injectable({
